@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
+require 'date'
+require_relative '../lib/orders_report'
 
 describe OrdersReport do
   describe '#total_sales_within_date_range' do
@@ -11,11 +15,11 @@ describe OrdersReport do
                                      placed_at: Date.new(2016, 1, 1))
       orders = [order_within_range1, order_within_range2, order_out_of_range]
 
-      date_range = DateRange.new(Date.new(2016, 10, 1),  Date.new(2016, 10, 31))
+      date_range = DateRange.new(Date.new(2016, 10, 1), Date.new(2016, 10, 31))
 
-      expect(OrdersReport.
-             new(orders, date_range).
-             total_sales_within_date_range).to eq(15)
+      expect(OrdersReport.new(orders, date_range)
+        .total_sales_within_date_range)
+        .to eq(15)
     end
   end
 end
