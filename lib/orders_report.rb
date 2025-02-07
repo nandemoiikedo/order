@@ -12,8 +12,8 @@ class OrdersReport
       order.placed_at >= @start_date && order.placed_at <= @end_date
     end
 
-    orders_within_range.inject(0) do |sum, order|
-      sum + order.amount
+    orders_within_range.map(&:amount).inject(0) do |sum, order|
+      sum + order
     end
   end
 end
