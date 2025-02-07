@@ -8,11 +8,8 @@ class OrdersReport
   end
 
   def total_sales_within_date_range
-    orders_within_range = []
-    @orders.each do |order|
-      if order.placed_at >= @start_date && order.placed_at <= @end_date
-        orders_within_range << order
-      end
+    orders_within_range = @orders.select do |order|
+      order.placed_at >= @start_date && order.placed_at <= @end_date
     end
 
     sum = 0
