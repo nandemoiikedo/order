@@ -1,4 +1,4 @@
-範囲を指定してその期間の売上そう合計を出すコード
+# 範囲を指定してその期間の売上そう合計を出すコード
 
 class OrdersReport
   def initialize(orders, start_date, end_date)
