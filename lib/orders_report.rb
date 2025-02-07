@@ -8,12 +8,16 @@ class OrdersReport
   end
 
   def total_sales_within_date_range
-    orders_within_range = @orders.select do |order|
-      order.placed_at >= @start_date && order.placed_at <= @end_date
-    end
-
     orders_within_range.map(&:amount).inject(0) do |sum, order|
       sum + order
+    end
+  end
+
+  private
+
+  def order_with_range
+    @orders.select do |order|
+      order.placed_at >= @start_date && order.placed_at <= @end_date
     end
   end
 end
